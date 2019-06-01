@@ -1,19 +1,19 @@
 def main():
-    S = input()
-    arr = []
+    a = int(input(), 2)
     c = 0
-    ps = ''
-    for s in S:
-        if ps == s:
-            c += 1
-        else:
-            ps = s
-            arr.append(c)
-            c = 1
-    arr.append(c)
+    pc = 0
     ans = 0
-    for i in range(1, len(arr) - 2, 2):
-        ans = max(ans, arr[i] + arr[i + 2] + 1)
+    while a != 0:
+        if a & 1 == 0:
+            if a & 2 == 0:
+                pc = 0
+            else:
+                pc = c
+            c = 0
+        elif a & 1 == 1:
+            c += 1
+        ans = max(ans, c + pc + 1)
+        a >>= 1
     print(ans)
 
 
