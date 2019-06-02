@@ -8,11 +8,7 @@ def front(n):
     while c & 1 == 1:
         c1 += 1
         c >>= 1
-    p = c0 + c1
-    n |= 1 << p
-    n &= ~((1 << p) - 1)
-    n |= (1 << (c1 - 1)) - 1
-    return n
+    return n + (1 << c0) + (1 << (c1 - 1)) - 1
 
 
 def back(n):
@@ -25,11 +21,7 @@ def back(n):
     while c & 1 == 0 and c != 0:
         c0 += 1
         c >>= 1
-    p = c0 + c1
-    n &= (~0) << (p + 1)
-    m = (1 << (c1 + 1)) - 1
-    n |= m << (c0 - 1)
-    return n
+    return n - (1 << c1) - (1 << (c0 - 1)) + 1
 
 
 def main():
