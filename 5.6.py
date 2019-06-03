@@ -4,8 +4,8 @@ def main():
     c = a ^ b
     ans = 0
     while c != 0:
-        c >>= 1
-        ans += c & 1
+        c &= c - 1
+        ans += 1
     print(ans)
 
 
